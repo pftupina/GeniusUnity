@@ -1,0 +1,3 @@
+[submodule "Assets/ScriptableObject-Architecture"]
+	path = Assets/ScriptableObject-Architecture
+	url = https://github.com/pftupina/ScriptableObject-Architecture.git
