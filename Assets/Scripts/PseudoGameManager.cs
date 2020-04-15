@@ -3,20 +3,28 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
+using ScriptableObjectArchitecture;
 
 public class PseudoGameManager : MonoBehaviour
 {
-    [SerializeField]
-    GameButton[] gameButtons;
 
+    [SerializeField]
+    IntGameEvent glowButton;
 
     [SerializeField]
     List<int> buttonOrder;
+
+    [SerializeField]
+    IntReference buttonCount;
+
+    [SerializeField]
+    BoolGameEvent showSequenceEvent;
 
     private int expectedButtonIndex;
 
     private void Start()
     {
+
         buttonOrder = new List<int>();
 
         addButtonToOrder();
@@ -26,24 +34,28 @@ public class PseudoGameManager : MonoBehaviour
 
     void addButtonToOrder()
     {
-        int n = Random.Range(0, gameButtons.Length);
+        int n = Random.Range(0, buttonCount.Value);
         buttonOrder.Add(n);
     }
 
     IEnumerator showOrder()
     {
+        showSequenceEvent.Raise(false);
 
         yield return new WaitForSeconds(1f);
         foreach (int n in buttonOrder)
         {
-            gameButtons[n].glow();
+            glowButton.Raise(n);
             yield return new WaitForSeconds(1f);
         }
         expectedButtonIndex = 0;
+
+        showSequenceEvent.Raise(true);
     }
 
     public void buttonPressed(int n)
     {
+        
         if (n == buttonOrder[expectedButtonIndex])
         {
             expectedButtonIndex++;

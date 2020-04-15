@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4750010934229788222}
   - component: {fileID: 4750010934229788223}
   - component: {fileID: 4750010934229788220}
+  - component: {fileID: 7138493064134582640}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -149,6 +150,42 @@ MonoBehaviour:
   button: {fileID: 4750010934229788223}
   mainColor: {r: 0.13725491, g: 0.15686275, b: 0.36078432, a: 1}
   highlightColor: {r: 0.4738341, g: 0.50234246, b: 0.8301887, a: 1}
+--- !u!114 &7138493064134582640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4750010934229788218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DeveloperDescription:
+    _value: 
+  _showDebugFields: 0
+  _enableGizmoDebugging: 1
+  _debugColor: {r: 0, g: 1, b: 1, a: 1}
+  _previouslyRegisteredEvent: {fileID: 0}
+  _event: {fileID: 11400000, guid: e39863ac9e1214b9a9b5ec1cace51b78, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4750010934229788223}
+        m_MethodName: set_interactable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: ScriptableObjectArchitecture.BoolUnityEvent, ScriptableObject-Architecture,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  _debugValue: 0
 --- !u!1 &4750010935343389414
 GameObject:
   m_ObjectHideFlags: 0
