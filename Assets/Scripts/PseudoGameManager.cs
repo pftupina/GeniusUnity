@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 using ScriptableObjectArchitecture;
+using UnityEngine.Events;
 
 public class PseudoGameManager : MonoBehaviour
 {
@@ -11,12 +12,14 @@ public class PseudoGameManager : MonoBehaviour
     [SerializeField]
     IntGameEvent glowButton;
 
-
     [SerializeField]
     IntReference buttonCount;
 
     [SerializeField]
     BoolGameEvent playingEnabled;
+
+    [SerializeField]
+    UnityEvent onFail;
 
     private int expectedButtonIndex;
     List<int> buttonOrder;
@@ -69,7 +72,7 @@ public class PseudoGameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            onFail.Invoke();
         }
     }
 
