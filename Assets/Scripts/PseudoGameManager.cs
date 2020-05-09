@@ -11,16 +11,15 @@ public class PseudoGameManager : MonoBehaviour
     [SerializeField]
     IntGameEvent glowButton;
 
-    [SerializeField]
-    List<int> buttonOrder;
 
     [SerializeField]
     IntReference buttonCount;
 
     [SerializeField]
-    BoolGameEvent showSequenceEvent;
+    BoolGameEvent playingEnabled;
 
     private int expectedButtonIndex;
+    List<int> buttonOrder;
 
     private void Start()
     {
@@ -40,7 +39,7 @@ public class PseudoGameManager : MonoBehaviour
 
     IEnumerator showOrder()
     {
-        showSequenceEvent.Raise(false);
+        playingEnabled.Raise(false);
 
         yield return new WaitForSeconds(1f);
         foreach (int n in buttonOrder)
@@ -50,11 +49,12 @@ public class PseudoGameManager : MonoBehaviour
         }
         expectedButtonIndex = 0;
 
-        showSequenceEvent.Raise(true);
+        playingEnabled.Raise(true);
     }
 
     public void buttonPressed(int n)
     {
+        Debug.Log(n.ToString());
         
         if (n == buttonOrder[expectedButtonIndex])
         {

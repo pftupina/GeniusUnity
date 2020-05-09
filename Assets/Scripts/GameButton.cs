@@ -4,28 +4,55 @@ using UnityEngine;
 using UnityEngine.UI;
 using ScriptableObjectArchitecture;
 using System;
+using UnityEngine.Events;
 
 public class GameButton : MonoBehaviour
 {
+
+    [Header("Data")]
     [SerializeField]
-    Button button;
+    int buttonId;
 
     [SerializeField]
     Color mainColor;
 
-
     [SerializeField]
     Color highlightColor;
 
-    private void Start()
+    [Header("Events")]
+    [SerializeField]
+    IntGameEvent buttonPressedEvent;
+
+    [SerializeField]
+    UnityEvent onGlow;
+
+
+    [Header("Component references")]
+    [SerializeField]
+    Button buttonComponent;
+
+
+    private void OnValidate()
     {
-        button.image.color = mainColor;   
+        buttonComponent.image.color = mainColor;
     }
 
+    public void buttonPressed()
+    {
+        buttonPressedEvent.Raise(buttonId);
+    }
+
+    public void checkId(int id)
+    {
+        if (id == buttonId)
+        {
+            onGlow.Invoke();
+        }
+    }
 
     public void glow()
     {
-        StartCoroutine(color(button));
+        _ = StartCoroutine(color(buttonComponent));
     }
 
     IEnumerator color(Button button)
