@@ -295,7 +295,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1152386063538330412}
   - component: {fileID: 6934464590145498494}
-  - component: {fileID: 7818160717146485926}
   - component: {fileID: 6516356143905137556}
   m_Layer: 5
   m_Name: ButtonController
@@ -336,6 +335,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonId: 0
+  buttonsEnabled:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 937f24491fc482e4fa125ef86422e781, type: 2}
   buttonPressedEvent: {fileID: 11400000, guid: 91665b250c55143e093c8f47b0df853d, type: 2}
   onGlow:
     m_PersistentCalls:
@@ -352,40 +355,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   buttonComponent: {fileID: 4750010934229788223}
---- !u!114 &7818160717146485926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6215019654842106669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 791e3eca91bfc2e41b38477d0ecfaf1b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DeveloperDescription:
-    _value: "Controla se a sequ\xEAncia est\xE1 sendo mostrada ou n\xE3o"
-  _showDebugFields: 0
-  _enableGizmoDebugging: 1
-  _debugColor: {r: 0, g: 1, b: 1, a: 1}
-  _previouslyRegisteredEvent: {fileID: 0}
-  _event: {fileID: 11400000, guid: de0e49852bb0f834b9b650a4776196a6, type: 2}
-  _response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4750010934229788223}
-        m_MethodName: set_interactable
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _debugValue: 0
 --- !u!114 &6516356143905137556
 MonoBehaviour:
   m_ObjectHideFlags: 0

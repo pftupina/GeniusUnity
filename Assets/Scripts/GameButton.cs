@@ -13,6 +13,9 @@ public class GameButton : MonoBehaviour
     [SerializeField]
     int buttonId;
 
+    [SerializeField]
+    BoolReference buttonsEnabled;
+
     [Header("Events")]
     [SerializeField]
     IntGameEvent buttonPressedEvent;
@@ -23,6 +26,11 @@ public class GameButton : MonoBehaviour
     [Header("Component references")]
     [SerializeField]
     Button buttonComponent;
+
+    public void Update()
+    {
+        buttonComponent.interactable = buttonsEnabled.Value;
+    }
 
     public void buttonPressed()
     {

@@ -16,7 +16,10 @@ public class PseudoGameManager : MonoBehaviour
     IntReference buttonCount;
 
     [SerializeField]
-    BoolGameEvent playingEnabled;
+    BoolReference sequenceIsShowing;
+
+    [SerializeField]
+    UnityEvent onSuccess;
 
     [SerializeField]
     UnityEvent onFail;
@@ -26,12 +29,8 @@ public class PseudoGameManager : MonoBehaviour
 
     private void Start()
     {
-
         buttonOrder = new List<int>();
-
         addButtonToOrder();
-        StartCoroutine(showOrder());
-
     }
 
     void addButtonToOrder()
@@ -42,7 +41,7 @@ public class PseudoGameManager : MonoBehaviour
 
     IEnumerator showOrder()
     {
-        playingEnabled.Raise(false);
+        sequenceIsShowing.Value = true;
 
         yield return new WaitForSeconds(1f);
         foreach (int n in buttonOrder)
@@ -52,7 +51,12 @@ public class PseudoGameManager : MonoBehaviour
         }
         expectedButtonIndex = 0;
 
-        playingEnabled.Raise(true);
+        sequenceIsShowing.Value = false;
+    }
+
+    public void ShowSequence()
+    {
+        StartCoroutine(showOrder());
     }
 
     public void buttonPressed(int n)
@@ -65,6 +69,7 @@ public class PseudoGameManager : MonoBehaviour
 
             if (expectedButtonIndex >= buttonOrder.Count)
             {
+                onSuccess.Invoke();
                 addButtonToOrder();
                 StartCoroutine(showOrder());
 
